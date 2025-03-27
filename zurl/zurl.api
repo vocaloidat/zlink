@@ -1,0 +1,15 @@
+syntax = "v1"
+
+type Request {
+	ShortUrl string `path:"shortUrl"`
+}
+
+type Response {
+	LongUrl string `json:"longUrl"`
+}
+
+service zurl-api {
+	@handler ZurlHandler
+	get /url/:shortUrl (Request) returns (Response)
+}
+
