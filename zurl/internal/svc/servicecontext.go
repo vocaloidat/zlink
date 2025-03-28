@@ -36,7 +36,8 @@ func NewServiceContext(c config.Config) *ServiceContext {
 	filter := bloom.New(store, "bloom_Url", 1024)
 
 	return &ServiceContext{
-		Config:    c,
+		Config: c,
+		// go-zero c.CacheRedis 自带了 singleflight
 		ZUrlModel: model.NewShortUrlMapModel(connZurlmysql, c.CacheRedis),
 		SeqModel:  model.NewSequenceModel(connSeqmysql, c.CacheRedis),
 		Sequence:  sequence.NewMysql(c.SequenceMysql.DataSource),

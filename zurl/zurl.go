@@ -6,6 +6,7 @@ import (
 	"zlink/zurl/internal/config"
 	"zlink/zurl/internal/handler"
 	"zlink/zurl/internal/svc"
+	"zlink/zurl/tools/base62"
 
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/rest"
@@ -20,7 +21,7 @@ func main() {
 	var c config.Config
 	conf.MustLoad(*configFile, &c)
 	// 初始化自己的base62
-	//base62.NewBase62Tool(c.Base62Chars)
+	base62.NewBase62Tool(c.Base62Chars)
 
 	// 初始化黑名单
 	conf.MustLoad(*blackListConfigFile, &config.BlackLC)

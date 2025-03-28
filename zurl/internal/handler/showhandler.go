@@ -32,8 +32,10 @@ func ShowHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 			// 自定义结构返回
 			bodyx.Writer(w, r, resp, err)
 		} else {
-			// 跳转
+			// StatusMovedPermanently
+			// 跳转 301永久重定向，302临时重定向
 			http.Redirect(w, r, resp.LongUrl, http.StatusFound)
+			//http.Redirect(w, r, resp.LongUrl, http.StatusMovedPermanently)
 		}
 
 	}
