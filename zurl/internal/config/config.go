@@ -21,4 +21,7 @@ type Config struct {
 	RedisUrl struct {
 		Host string
 	}
+	Base62Chars string
+
+	ZUrlDoamin string
 }

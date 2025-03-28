@@ -2,6 +2,8 @@ Name: zurl-api
 Host: 0.0.0.0
 Port: 8888
 
+ZUrlDoamin: "www.vocaloid.com"
+
 ZUrlMysql:
   DataSource: root:123456@tcp(127.0.0.1:3306)/zlink?parseTime=true
 
@@ -13,3 +15,5 @@ CacheRedis:
 
 RedisUrl:
   Host: 127.0.0.1:6379
+
+Base62Chars: "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
