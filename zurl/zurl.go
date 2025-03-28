@@ -12,7 +12,7 @@ import (
 )
 
 var configFile = flag.String("f", "etc/zurl-api.yaml", "the config file")
-var blckListConfigFile = flag.String("b", "etc/UrlBlackList.yaml", "the config file")
+var blackListConfigFile = flag.String("b", "etc/UrlBlackList.yaml", "the config file")
 
 func main() {
 	flag.Parse()
@@ -23,7 +23,7 @@ func main() {
 	//base62.NewBase62Tool(c.Base62Chars)
 
 	// 初始化黑名单
-	conf.MustLoad(*blckListConfigFile, &config.BlackLC)
+	conf.MustLoad(*blackListConfigFile, &config.BlackLC)
 	config.BlackLC.ToMap() // 将黑名单转为map,这样校验更快
 
 	server := rest.MustNewServer(c.RestConf)
