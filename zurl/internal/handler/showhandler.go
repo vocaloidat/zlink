@@ -2,6 +2,7 @@ package handler
 
 import (
 	"net/http"
+	"zlink/zurl/bodyx"
 
 	"github.com/zeromicro/go-zero/rest/httpx"
 	"zlink/zurl/internal/logic"
@@ -19,10 +20,12 @@ func ShowHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 
 		l := logic.NewShowLogic(r.Context(), svcCtx)
 		resp, err := l.Show(&req)
-		if err != nil {
-			httpx.ErrorCtx(r.Context(), w, err)
-		} else {
-			httpx.OkJsonCtx(r.Context(), w, resp)
-		}
+		//if err != nil {
+		//	httpx.ErrorCtx(r.Context(), w, err)
+		//} else {
+		//	httpx.OkJsonCtx(r.Context(), w, resp)
+		//}
+		// 自定义结构返回
+		bodyx.Writer(w, r, resp, err)
 	}
 }

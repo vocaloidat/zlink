@@ -4,6 +4,7 @@ import (
 	"errors"
 	"github.com/go-playground/validator/v10"
 	"net/http"
+	"zlink/zurl/bodyx"
 
 	"github.com/zeromicro/go-zero/rest/httpx"
 	"zlink/zurl/internal/logic"
@@ -28,10 +29,12 @@ func ConvertHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 
 		l := logic.NewConvertLogic(r.Context(), svcCtx)
 		resp, err := l.Convert(&req)
-		if err != nil {
-			httpx.ErrorCtx(r.Context(), w, err)
-		} else {
-			httpx.OkJsonCtx(r.Context(), w, resp)
-		}
+		//if err != nil {
+		//	httpx.ErrorCtx(r.Context(), w, err)
+		//} else {
+		//	httpx.OkJsonCtx(r.Context(), w, resp)
+		//}
+		// 自定义结构返回
+		bodyx.Writer(w, r, resp, err)
 	}
 }
