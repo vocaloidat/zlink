@@ -16,8 +16,13 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 		[]rest.Route{
 			{
 				Method:  http.MethodGet,
-				Path:    "/url/:shortUrl",
-				Handler: ZurlHandler(serverCtx),
+				Path:    "/:shortUrl",
+				Handler: ShowHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/convert",
+				Handler: ConvertHandler(serverCtx),
 			},
 		},
 	)

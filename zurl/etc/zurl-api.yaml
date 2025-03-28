@@ -1,3 +1,15 @@
 Name: zurl-api
 Host: 0.0.0.0
 Port: 8888
+
+ZUrlMysql:
+  DataSource: root:123456@tcp(127.0.0.1:3306)/zlink?parseTime=true
+
+SequenceMysql:
+  DataSource: root:123456@tcp(127.0.0.1:3306)/zlink?parseTime=true
+
+CacheRedis:
+  - Host: 127.0.0.1:6379
+
+RedisUrl:
+  Host: 127.0.0.1:6379

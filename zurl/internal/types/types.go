@@ -3,10 +3,18 @@
 
 package types
 
-type Request struct {
-	ShortUrl string `path:"shortUrl"`
+type ConvertRequest struct {
+	LongUrl string `json:"longUrl" validate:"required"`
 }
 
-type Response struct {
+type ConvertResponse struct {
+	ShortUrl string `json:"shortUrl"`
+}
+
+type ShowRequest struct {
+	ShortUrl string `json:"shortUrl" validate:"required"`
+}
+
+type ShowResponse struct {
 	LongUrl string `json:"longUrl"`
 }
