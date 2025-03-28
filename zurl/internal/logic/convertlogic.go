@@ -121,5 +121,11 @@ func (l *ConvertLogic) Convert(req *types.ConvertRequest) (resp *types.ConvertRe
 	resp = &types.ConvertResponse{
 		ShortUrl: l.svcCtx.Config.ZUrlDoamin + "/" + short,
 	}
+	// 6. 添加到布隆过滤器里面
+	err = l.svcCtx.Filter.Add([]byte(short))
+	if err != nil {
+		logx.Error("布隆过滤器写入失败，记录错误:err:", err)
+		return nil, errors.New("布隆过滤器写入失败，记录错误,err:" + err.Error())
+	}
 	return resp, nil
 }

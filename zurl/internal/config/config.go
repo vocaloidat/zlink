@@ -24,4 +24,7 @@ type Config struct {
 	Base62Chars string
 
 	ZUrlDoamin string
+
+	// 布隆过滤器地址
+	BloomRedisHost cache.CacheConf
 }

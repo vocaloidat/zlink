@@ -16,4 +16,8 @@ CacheRedis:
 RedisUrl:
   Host: 127.0.0.1:6379
 
+BloomRedisHost:
+  - Host: 127.0.0.1:6379
+
 Base62Chars: "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
