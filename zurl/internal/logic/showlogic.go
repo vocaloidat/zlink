@@ -2,6 +2,8 @@ package logic
 
 import (
 	"context"
+	"database/sql"
+	"errors"
 
 	"zlink/zurl/internal/svc"
 	"zlink/zurl/internal/types"
@@ -26,6 +28,18 @@ func NewShowLogic(ctx context.Context, svcCtx *svc.ServiceContext) *ShowLogic {
 // Show 展示短链接
 func (l *ShowLogic) Show(req *types.ShowRequest) (resp *types.ShowResponse, err error) {
 	//
+	// 数据库查询短链接对应长连接
+	u, err := l.svcCtx.ZUrlModel.FindOneBySurl(l.ctx, sql.NullString{
+		String: req.ShortUrl,
+		Valid:  true,
+	})
+	if err != nil {
+		logx.Error("数据库查询错误:err:", err)
+		return nil, errors.New("请输入正确的链接")
+	}
 
-	return
+	// 返回短链接对应的长链接
+	return &types.ShowResponse{
+		LongUrl: u.Lurl.String,
+	}, nil
 }
